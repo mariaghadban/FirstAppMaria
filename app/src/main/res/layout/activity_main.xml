@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    app:layout_constraintBaseline_creator="@integer/material_motion_duration_long_1"
     tools:context=".MainActivity">
 
     <Button
