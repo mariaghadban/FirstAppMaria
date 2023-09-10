@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/taskk"
     app:layout_constraintBaseline_creator="@integer/material_motion_duration_long_1"
     tools:context=".MainActivity">
 
@@ -11,9 +12,17 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="636dp"
+        android:layout_marginBottom="40dp"
         android:backgroundTint="#006064"
         android:text="exit"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="88dp" />
+        tools:layout_editor_absoluteX="281dp" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="55dp"
+        tools:layout_editor_absoluteY="37dp"
+        tools:srcCompat="@tools:sample/avatars" />
 </androidx.constraintlayout.widget.ConstraintLayout>
