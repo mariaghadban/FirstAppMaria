@@ -25,9 +25,27 @@ public class MainActivity extends AppCompatActivity {
         }
         protected void onResum()
         {
-        super.onResume();
-        Log.d()
+            super.onResume();
+            Log.d("","");
+            Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
         }
+
+        protected void onPause() {
+            super.onPause();
+            Log.d("","");
+            Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
+        }
+        protected void onStop(){
+            super.onStop();
+            Log.d("","");
+            Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
+        }
+        protected void onDestroy(){
+            super.onDestroy();
+            Log.d("","");
+            Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
+        }
+
 
 
 
