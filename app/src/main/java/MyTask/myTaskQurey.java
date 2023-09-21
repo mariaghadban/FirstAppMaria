@@ -7,30 +7,56 @@ import androidx.room.Query;
 import androidx.room.Update;
 import java.util.List;
 
-@Dao //واجهة استعلامات على جدول معطيات
+@Dao
+//واجهة استعلامات على جدول معطيات
 public interface myTaskQurey {
+
+    /**
+     * اعادة جميع رمعطيات الجدول
+     * @return قائمةمن.المهمات
+     */
     @Query("SELECT * FROM MyUser")
     List<myTask> getAll();
 
-    @Query("SELECT * FROM MyUser WHERE keyid IN (:userIds)")
-    List<myTask> loadAllByIds(int[] userIds);
+    /**
+     *
+     * '@param userid_p
+     * '@param isCompleted_p
+     * '@return
+     */
+    @Query("SELECT * FROM myTask WHERE userId=:userid_p AND isCompleted=:isCompleted_p "
+            +"ORDER BY importance DESC")
+    List<myTask> taskOrderBy(long userid_p, boolean isCompleted_p);
 
-    @Query("SELECT * FROM MyUser WHERE email = :myEmail AND " +
-            "passw = :myPassw LIMIT 1")
-    myTask checkEmailPassw(String myEmail, String myPassw);
-
+    @Query("SELECT * FROM myTask WHERE userId=: userid_p " +
+             " ORDER BY time DESC " )
+    List<myTask> taskByTime(long userid_p);
+    /**
+     * ادخال مهمات
+     * @param tasks مجموعة مهمات
+     */
     @Insert
-    void insertAll(myTask... users);
+    void insertAll(myTask... tasks);// تلت نقط يعني مجموعة
 
+    /**
+     * حذف مهمات
+     * '@param user
+     */
     @Delete
     void delete(myTask user);
 
-    @Query("Delete From myTask WHERE keyid=:id ")
-    void delete(int id);
+    @Query("Delete From myTask WHERE keyId=:id ")
+    void deleteTask(long id);
+
 
     @Insert
-    void insert(myTask myUser);
+    void insert(myTask task);
+
+    /**
+     * تعديل المهمات
+     * '@param tasks
+     */
     @Update
-    void update(myTask...values);
+    void update(myTask...tasks);
 
 }
