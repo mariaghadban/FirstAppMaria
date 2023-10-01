@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
             Log.d("","");
             Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
         }
-        protected void onResum()
+        protected void onResume()
         {
             super.onResume();
             Log.d("","");
@@ -46,7 +46,11 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
         }
 
-
+        protected void onStart(){
+            super.onStart();
+            Log.d("","");
+            Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
+    }
 
 
 }
