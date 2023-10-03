@@ -1,4 +1,4 @@
-package MyTask;
+package com.example.firstapp.MyTask;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -7,8 +7,8 @@ import androidx.room.Query;
 import androidx.room.Update;
 import java.util.List;
 
-@Dao
 //واجهة استعلامات على جدول معطيات
+@Dao
 public interface myTaskQurey {
 
     /**
