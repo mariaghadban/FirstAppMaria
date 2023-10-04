@@ -9,14 +9,14 @@ import java.util.List;
 
 //واجهة استعلامات على جدول معطيات
 @Dao
-public interface myTaskQurey {
+public interface MyTaskQurey {
 
     /**
      * اعادة جميع رمعطيات الجدول
      * @return قائمةمن.المهمات
      */
     @Query("SELECT * FROM MyUser")
-    List<myTask> getAll();
+    List<MyTask> getAll();
 
     /**
      *
@@ -26,37 +26,37 @@ public interface myTaskQurey {
      */
     @Query("SELECT * FROM myTask WHERE userId=:userid_p AND isCompleted=:isCompleted_p "
             +"ORDER BY importance DESC")
-    List<myTask> taskOrderBy(long userid_p, boolean isCompleted_p);
+    List<MyTask> taskOrderBy(long userid_p, boolean isCompleted_p);
 
-    @Query("SELECT * FROM myTask WHERE userId=: userid_p " +
+    @Query("SELECT * FROM myTask WHERE userId=:userid_p " +
              " ORDER BY time DESC " )
-    List<myTask> taskByTime(long userid_p);
+    List<MyTask> taskByTime(long userid_p);
     /**
      * ادخال مهمات
      * @param tasks مجموعة مهمات
      */
     @Insert
-    void insertAll(myTask... tasks);// تلت نقط يعني مجموعة
+    void insertAll(MyTask... tasks);// تلت نقط يعني مجموعة
 
     /**
      * حذف مهمات
      * '@param user
      */
     @Delete
-    void delete(myTask user);
+    void delete(MyTask user);
 
     @Query("Delete From myTask WHERE keyId=:id ")
     void deleteTask(long id);
 
 
     @Insert
-    void insert(myTask task);
+    void insert(MyTask task);
 
     /**
      * تعديل المهمات
      * '@param tasks
      */
     @Update
-    void update(myTask...tasks);
+    void update(MyTask...tasks);
 
 }
