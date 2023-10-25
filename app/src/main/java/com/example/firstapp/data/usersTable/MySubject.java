@@ -1,10 +1,9 @@
-package com.example.firstapp.data.usersTable.subjectTable;
+package com.example.firstapp.data.usersTable;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity
-
 public class MySubject {
 
 

@@ -15,7 +15,7 @@ public interface MyTaskQurey {
      * اعادة جميع رمعطيات الجدول
      * @return قائمةمن.المهمات
      */
-    @Query("SELECT * FROM MyUser")
+    @Query("SELECT * FROM MyTask")
     List<MyTask> getAll();
 
     /**

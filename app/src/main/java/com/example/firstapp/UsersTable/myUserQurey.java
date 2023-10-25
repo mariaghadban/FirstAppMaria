@@ -1,12 +1,15 @@
-package com.example.firstapp.data.usersTable;
+package com.example.firstapp.UsersTable;
 
+import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import java.util.List;
+import com.example.firstapp.UsersTable.myUser;
 
+import java.util.List;
+@Dao
 public interface myUserQurey {
     @Query("SELECT * FROM MyUser")
     List<myUser> getAll();

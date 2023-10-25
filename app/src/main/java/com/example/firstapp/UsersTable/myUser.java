@@ -1,4 +1,4 @@
-package com.example.firstapp.data.usersTable;
+package com.example.firstapp.UsersTable;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
