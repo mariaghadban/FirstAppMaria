@@ -8,7 +8,8 @@ import android.widget.Button;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class SignUpAtivity extends AppCompatActivity {
-    private Button button2;
+    private Button btnSave;
+    private Button btnCancel;
     private TextInputEditText et_Email;
     private TextInputEditText et_password;
     private TextInputEditText et_repassword;
@@ -22,7 +23,8 @@ public class SignUpAtivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_ativity);
 
-        button2=findViewById(R.id.button2);
+        btnSave=findViewById(R.id.btnSave);
+        btnCancel=findViewById(R.id.btnCancel);
         et_Email=findViewById(R.id.et_Email);
         et_password=findViewById(R.id.et_password);
         et_repassword=findViewById(R.id.et_repassword);
