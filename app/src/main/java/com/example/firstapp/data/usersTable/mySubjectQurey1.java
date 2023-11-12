@@ -3,7 +3,6 @@ package com.example.firstapp.data.usersTable;
 import androidx.room.Dao;
 
 
-import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
@@ -12,7 +11,7 @@ import androidx.room.Update;
 
 import java.util.List;
 @Dao
-public interface mySubjectQurey {
+public interface mySubjectQurey1 {
     @Query("SELECT * FROM MySubject")
     List<MySubject> getAll();
 

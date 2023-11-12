@@ -54,40 +54,5 @@ public class splashScreenActivity extends AppCompatActivity {
 
 
 
-        protected void onRestart()
-        {
-            super.onRestart();
-            Log.d("","");
-            Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
-        }
-        protected void onResume()
-        {
-            super.onResume();
-            Log.d("","");
-            Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
-        }
-
-        protected void onPause() {
-            super.onPause();
-            Log.d("","");
-            Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
-        }
-        protected void onStop(){
-            super.onStop();
-            Log.d("","");
-            Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
-        }
-        protected void onDestroy(){
-            super.onDestroy();
-            Log.d("","");
-            Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
-        }
-
-        protected void onStart(){
-            super.onStart();
-            Log.d("","");
-            Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
-    }
-
 
 }
