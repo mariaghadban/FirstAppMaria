@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#DEE2E4"
     app:layout_constraintBaseline_creator="@integer/material_motion_duration_long_1"
     tools:context=".splashScreenActivity">
 
@@ -32,4 +33,12 @@
         app:layout_constraintBottom_toTopOf="@+id/imageView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/startbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="start"
+        tools:layout_editor_absoluteX="156dp"
+        tools:layout_editor_absoluteY="491dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

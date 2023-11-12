@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -26,4 +27,20 @@ public class signinactivity extends AppCompatActivity {
 
 
     }
+
+    private void checkEmailPASS() {
+        boolean isAllOk= true;
+        String email=etEmail.getText().toString();
+        String password=etPassword.getText().toString();
+        if(email.length())< 6 || email . contains("@"==false) {
+            isAllOk=false;
+            etEmail.setError("wrong email");
+        }
+        if(password.length())< 8|| password . contains(" "==true) {
+            isAllOk=false;
+            etPassword.setError("wrong password");
+    }
+        if (isAllOk){
+            Toast.makeText(this,"All Ok", Toast.LENGTH_SHORT).show();
+        }
 }
