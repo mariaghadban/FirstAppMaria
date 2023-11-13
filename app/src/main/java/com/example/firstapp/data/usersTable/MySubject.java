@@ -14,6 +14,7 @@ public class MySubject {
 
 
     @PrimaryKey(autoGenerate = true)//تحديد الصفة كمفتاح رئيسي والذي يُنتجح بشكل تلقائي
+    public long keyId;
     public long name;
     public String tName;
 

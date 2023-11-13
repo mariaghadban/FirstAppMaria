@@ -2,7 +2,9 @@ package com.example.firstapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -23,6 +25,13 @@ public class signinactivity extends AppCompatActivity {
         etPassword = findViewById(R.id.etPassword);
         btn_signin = findViewById(R.id.btn_signin);
         btn_signup = findViewById(R.id.btn_signup);
+
+
+    }
+    public void onClickSignUp(View v){
+        Intent i= new Intent(signinactivity.this, SignUpAtivity.class);
+        startActivity(i);
+        finish();
 
 
     }
