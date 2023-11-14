@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#35363A"
     tools:context=".signinactivity">
 
     <LinearLayout
@@ -41,6 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="15dp"
+            android:onClick="onClickMain"
             android:text="sign in"
             tools:layout_editor_absoluteX="169dp"
             tools:layout_editor_absoluteY="338dp" />
@@ -51,6 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="15dp"
+            android:onClick="onClickSignUp"
             android:text="sign up"
             tools:layout_editor_absoluteX="169dp"
             tools:layout_editor_absoluteY="498dp" />

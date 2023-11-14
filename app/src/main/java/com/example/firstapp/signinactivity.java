@@ -35,6 +35,13 @@ public class signinactivity extends AppCompatActivity {
 
 
     }
+    public void onClickMain(View v){
+        Intent in= new Intent(signinactivity.this, MainActivity.class);
+        startActivity(in);
+        finish();
+
+
+    }
 
 
     private void checkEmailPASS() {
