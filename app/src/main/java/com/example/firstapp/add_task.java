@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
 public class add_task extends AppCompatActivity {
@@ -34,4 +35,5 @@ public class add_task extends AppCompatActivity {
 
 
     }
+
 }

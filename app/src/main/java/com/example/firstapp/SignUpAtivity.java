@@ -52,6 +52,22 @@ public class SignUpAtivity extends AppCompatActivity {
         finish();
 
     }
+    private void checkEmailPASS() {
+        boolean isAllOk = true;
+        String email = et_Email.getText().toString();
+        String password = et_password.getText().toString();
+        if (email.length() < 6 || email.contains("@") == false) {
+            isAllOk = false;
+            et_Email.setError("wrong email");
+        }
+        if (password.length() < 8 || password.contains(" ") == true) {
+            isAllOk = false;
+            et_password.setError("wrong password");
+        }
+        if (isAllOk) {
+            Toast.makeText(this, "All Ok", Toast.LENGTH_SHORT).show();
+        }
+    }
 
 
 }

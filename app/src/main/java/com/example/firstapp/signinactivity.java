@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.firstapp.UsersTable.myUser;
+import com.example.firstapp.UsersTable.myUserQurey;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class signinactivity extends AppCompatActivity {
@@ -28,13 +30,15 @@ public class signinactivity extends AppCompatActivity {
 
 
     }
-    public void onClickSignUp(View v){
-        Intent i= new Intent(signinactivity.this, SignUpAtivity.class);
+
+    public void onClickSignUp(View v) {
+        Intent i = new Intent(signinactivity.this, SignUpAtivity.class);
         startActivity(i);
         finish();
 
 
     }
+    /*
     public void onClickMain(View v){
         Intent in= new Intent(signinactivity.this, MainActivity.class);
         startActivity(in);
@@ -42,7 +46,7 @@ public class signinactivity extends AppCompatActivity {
 
 
     }
-
+*/
 
     private void checkEmailPASS() {
         boolean isAllOk = true;
@@ -56,8 +60,12 @@ public class signinactivity extends AppCompatActivity {
             isAllOk = false;
             etPassword.setError("wrong password");
         }
+
         if (isAllOk) {
             Toast.makeText(this, "All Ok", Toast.LENGTH_SHORT).show();
+            AppDatabase db = AppDatabase.getDB(getApplicationContext());
+            myUserQurey userQurey = userQurey.checkEmailPassw(email, password);
+            myUser
         }
     }
 }
