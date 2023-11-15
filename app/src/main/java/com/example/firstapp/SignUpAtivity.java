@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.firstapp.UsersTable.myUser;
+import com.example.firstapp.UsersTable.myUserQurey;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class SignUpAtivity extends AppCompatActivity {
@@ -66,6 +68,25 @@ public class SignUpAtivity extends AppCompatActivity {
         }
         if (isAllOk) {
             Toast.makeText(this, "All Ok", Toast.LENGTH_SHORT).show();
+        }
+        if (isAllOk){
+            AppDatabase db = AppDatabase.getDB(getApplicationContext());
+            myUserQurey userQurey = db.getMyUserQuery();
+
+            if(userQurey.checkEmailPassw(email)!=null)
+            {
+                et_Email.setError("found email");
+            }
+            else{
+                myUser MyUser=new myUser();
+                myUser.email=email;
+                myUser.fullName=name;
+                myUser.phone= phone;
+                myUser.passw=password;
+                userQurey.insert(myUser);
+                finish();
+
+            }
         }
     }
 

@@ -64,8 +64,20 @@ public class signinactivity extends AppCompatActivity {
         if (isAllOk) {
             Toast.makeText(this, "All Ok", Toast.LENGTH_SHORT).show();
             AppDatabase db = AppDatabase.getDB(getApplicationContext());
-            myUserQurey userQurey = userQurey.checkEmailPassw(email, password);
-            myUser
+            myUserQurey userQurey = db.getMyUserQuery();
+            myUser MyUser = userQurey.checkEmailPassw(email, password);
+            if (MyUser==null){
+                Toast.makeText(this, "wrong email or password", Toast.LENGTH_LONG).show();
+
+            }
+            else
+            {
+                Intent i=new Intent(signinactivity.this,MainActivity.class);
+                startActivity(i);
+                finish();
+            }
+        }
+
         }
     }
-}
+
