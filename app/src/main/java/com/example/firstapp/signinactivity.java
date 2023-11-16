@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.firstapp.UsersTable.myUser;
+import com.example.firstapp.UsersTable.MyUser;
 import com.example.firstapp.UsersTable.myUserQurey;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -65,7 +65,7 @@ public class signinactivity extends AppCompatActivity {
             Toast.makeText(this, "All Ok", Toast.LENGTH_SHORT).show();
             AppDatabase db = AppDatabase.getDB(getApplicationContext());
             myUserQurey userQurey = db.getMyUserQuery();
-            myUser MyUser = userQurey.checkEmailPassw(email, password);
+            MyUser MyUser = userQurey.checkEmailPassw(email, password);
             if (MyUser==null){
                 Toast.makeText(this, "wrong email or password", Toast.LENGTH_LONG).show();
 

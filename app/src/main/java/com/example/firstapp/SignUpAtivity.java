@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.firstapp.UsersTable.myUser;
+import com.example.firstapp.UsersTable.MyUser;
 import com.example.firstapp.UsersTable.myUserQurey;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -58,6 +58,9 @@ public class SignUpAtivity extends AppCompatActivity {
         boolean isAllOk = true;
         String email = et_Email.getText().toString();
         String password = et_password.getText().toString();
+        String name = et_name.getText().toString();
+        String phone = et_phone.getText().toString();
+        String passw = et_password.getText().toString();
         if (email.length() < 6 || email.contains("@") == false) {
             isAllOk = false;
             et_Email.setError("wrong email");
@@ -73,16 +76,16 @@ public class SignUpAtivity extends AppCompatActivity {
             AppDatabase db = AppDatabase.getDB(getApplicationContext());
             myUserQurey userQurey = db.getMyUserQuery();
 
-            if(userQurey.checkEmailPassw(email)!=null)
+            if(userQurey.checkEmail(email)!=null)
             {
                 et_Email.setError("found email");
             }
             else{
-                myUser MyUser=new myUser();
-                myUser.email=email;
-                myUser.fullName=name;
-                myUser.phone= phone;
-                myUser.passw=password;
+                MyUser myUser=new MyUser();
+                MyUser.email=email;
+                MyUser.fullName=name;
+                MyUser.phone= phone;
+                MyUser.passw=password;
                 userQurey.insert(myUser);
                 finish();
 

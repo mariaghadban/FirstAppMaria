@@ -6,33 +6,37 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.firstapp.UsersTable.myUser;
-
 import java.util.List;
 @Dao
 public interface myUserQurey {
     @Query("SELECT * FROM MyUser")
-    List<myUser> getAll();
+    List<MyUser> getAll();
 
     @Query("SELECT * FROM MyUser WHERE keyid IN (:userIds)")
-    List<myUser> loadAllByIds(int[] userIds);
+    List<MyUser> loadAllByIds(int[] userIds);
 
     @Query("SELECT * FROM MyUser WHERE email = :myEmail AND " +
             "passw = :myPassw LIMIT 1")
-    myUser checkEmailPassw(String myEmail, String myPassw);
+    MyUser checkEmailPassw(String myEmail, String myPassw);
+
+    @Query("SELECT * FROM MyUser WHERE email = :myEmail"")
+    MyUser checkEmail(String email);
 
     @Insert
-    void insertAll(myUser... users);
+    void insertAll(MyUser... users);
 
     @Delete
-    void delete(myUser user);
+    void delete(MyUser user);
 
-    @Query("Delete From myUser WHERE keyid=:id ")
+    @Query("Delete From MyUser WHERE keyid=:id ")
     void delete(int id);
 
     @Insert
-    void insert(myUser myUser);
+    void insert(MyUser myUser);
     @Update
-    void update(myUser...values);
+    void update(MyUser...values);
 
+    boolean checkEmailPassw(String email);
+
+    boolean checkEmail(String email);
 }

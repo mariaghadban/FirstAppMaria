@@ -5,14 +5,14 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity
-public class myUser {
+public class MyUser {
     @PrimaryKey(autoGenerate = true)//تحديد الصفة كمفتاح رئيسي والذي يُنتجح بشكل تلقائي
     public long keyid;
     @ColumnInfo(name = "full_Name")//اعطاء اسم جديد للعامود-الصفة في الجدول
-    public String fullName;
-    public String email;//بحالة لم يتم اعطاء اسم للعامود يكون اسم الصفه هو اسم العامود
-    public String phone;
-    public String passw;
+    public static String fullName;
+    public static String email;//بحالة لم يتم اعطاء اسم للعامود يكون اسم الصفه هو اسم العامود
+    public static String phone;
+    public static String passw;
 
 @Override
     public String toString(){

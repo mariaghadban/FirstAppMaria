@@ -7,13 +7,13 @@ import androidx.room.RoomDatabase;
 
 import com.example.firstapp.MyTask.MyTask;
 import com.example.firstapp.MyTask.MyTaskQurey;
-import com.example.firstapp.UsersTable.myUser;
+import com.example.firstapp.UsersTable.MyUser;
 import com.example.firstapp.UsersTable.myUserQurey;
 import com.example.firstapp.data.usersTable.MySubject;
 import com.example.firstapp.data.usersTable.mySubjectQurey1;
 
 //3
-@Database(entities = {myUser.class, MySubject.class, MyTask.class},version = 5)
+@Database(entities = {MyUser.class, MySubject.class, MyTask.class},version = 5)
 public abstract class AppDatabase extends RoomDatabase
 {
     private static AppDatabase db;
