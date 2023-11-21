@@ -10,7 +10,7 @@ import androidx.room.Update;
 import java.util.List;
 
 @Dao
-public interface mySubjectQurey1 {
+public interface mySubjectQurey {
     @Query("SELECT * FROM MySubject")
     List<MySubject> getAll();
 
@@ -30,4 +30,5 @@ public interface mySubjectQurey1 {
     void update(MySubject...values);
 
 
+    List<MySubject> getAllSubjects();
 }

@@ -1,6 +1,6 @@
 package com.example.firstapp.UsersTable;
 
-import static com.example.firstapp.UsersTable.MyUser.email;
+//import static com.example.firstapp.UsersTable.MyUser.email;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -21,6 +21,11 @@ public interface myUserQurey {
             "passw = :myPassw LIMIT 1")
     MyUser checkEmailPassw(String myEmail, String myPassw);
 
+
+    @Query("SELECT * FROM MyUser WHERE email = :myEmail ")
+    MyUser checkEmail(String myEmail);
+
+
     @Insert
     void insertAll(MyUser... users);
 
@@ -39,5 +44,5 @@ public interface myUserQurey {
 
     boolean checkEmailPassw(String email);
 
-    boolean checkEmail(String email);
+
 }

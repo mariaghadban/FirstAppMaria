@@ -82,10 +82,10 @@ public class SignUpAtivity extends AppCompatActivity {
             }
             else{
                 MyUser myUser=new MyUser();
-                MyUser.email=email;
-                MyUser.fullName=name;
-                MyUser.phone= phone;
-                MyUser.passw=password;
+                myUser.email=email;
+                myUser.fullName=name;
+                myUser.phone= phone;
+                myUser.passw=password;
                 userQurey.insert(myUser);
                 finish();
 
