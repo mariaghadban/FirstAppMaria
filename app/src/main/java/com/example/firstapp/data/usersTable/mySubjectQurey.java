@@ -7,6 +7,9 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
+
+import com.example.firstapp.UsersTable.MyUser;
+
 import java.util.List;
 
 @Dao
@@ -28,6 +31,10 @@ public interface mySubjectQurey {
 
     @Update
     void update(MySubject...values);
+
+    @Query("SELECT * FROM MySubject WHERE name=:subjectText ")
+    MyUser checkSubject(String subjectText);
+
 
 
     List<MySubject> getAllSubjects();

@@ -42,7 +42,7 @@ public interface myUserQurey {
 
 
 
-    boolean checkEmailPassw(String email);
+   // boolean checkEmailPassw(String email);
 
 
 }

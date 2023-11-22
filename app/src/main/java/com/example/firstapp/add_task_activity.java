@@ -30,49 +30,53 @@ public class add_task_activity extends AppCompatActivity {
     private AutoCompleteTextView AutoEtSubj;
 
 
-
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_task);
         setContentView(R.layout.add_task_activity);
-        AutoEtSubj=findViewById(R.id.etSubj);
+        AutoEtSubj = findViewById(R.id.etSubj);
         initAutoEtSubjects();
 
 
-
-        etTextAdd=findViewById(R.id.etTextAd);
-        titleShort=findViewById(R.id.titleShort);
-        seekBarIm=findViewById(R.id.seekBarIm);
-        tvImportance=findViewById(R.id.tvImportance);
-        cancelBtnTask=findViewById(R.id.cancelBtnTask);
-        saveBtnTask=findViewById(R.id.saveBtnTask);
+        etTextAdd = findViewById(R.id.etTextAd);
+        titleShort = findViewById(R.id.titleShort);
+        seekBarIm = findViewById(R.id.seekBarIm);
+        tvImportance = findViewById(R.id.tvImportance);
+        cancelBtnTask = findViewById(R.id.cancelBtnTask);
+        saveBtnTask = findViewById(R.id.saveBtnTask);
     }
 
-    private void initAutoEtSubjects()
-    {
+    private void initAutoEtSubjects() {
         AppDatabase db = AppDatabase.getDB(getApplicationContext());
-        mySubjectQurey subjectQurey=db.getMySubjectQuery();
-        List<MySubject>allSubject =subjectQurey.getAllSubjects();
-        ArrayAdapter<MySubject>adapter=new ArrayAdapter<MySubject>(this, android.R.layout.simple_dropdown_item_1line);
+        mySubjectQurey subjectQurey = db.getMySubjectQuery();
+        List<MySubject> allSubject = subjectQurey.getAllSubjects();
+        ArrayAdapter<MySubject> adapter = new ArrayAdapter<MySubject>(this, android.R.layout.simple_dropdown_item_1line);
         adapter.addAll(allSubject);
         AutoEtSubj.setAdapter(adapter);
         AutoEtSubj.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-             AutoEtSubj.showDropDown();
+                AutoEtSubj.showDropDown();
             }
         });
 
 
     }
-    private void checkAndSaveTask{
+
+    private void checkAndSaveTask()
+
+    {
         boolean isAllOk = true;
-        if (isAllOk){
+        if (isAllOk) {
             AppDatabase db = AppDatabase.getDB(getApplicationContext());
-            mySubjectQurey subjectQurey=db.getMySubjectQuery();
-            if (subjectQurey.)
+            mySubjectQurey subjectQurey = db.getMySubjectQuery();
+            if (subjectQurey.checkSubject(tN)==null){
+                MySubject subject=new MySubject();
+                subject.tName=subjText;
+            }
+
 
         }
     }
