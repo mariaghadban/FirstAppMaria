@@ -18,16 +18,38 @@ public class MySubject {
     public long name;
     public String tName;
 
-    @Override
-    public String toString() {
-        return "name{" +
-                "=" +
-                ", tName='" + tName + '\'' +
-
-                '}';
+    public long getKeyId() {
+        return keyId;
     }
 
+    public long getName() {
+        return name;
+    }
 
+    public String getName() {
+        return tName;
+    }
+
+    public void setKeyId(long keyId) {
+        this.keyId = keyId;
+    }
+
+    public void setName(long name) {
+        this.name = name;
+    }
+
+    public void setName(String tName) {
+        this.tName = tName;
+    }
+
+    @Override
+    public String toString() {
+        return "MySubject{" +
+                "keyId=" + keyId +
+                ", name=" + name +
+                ", tName='" + tName + '\'' +
+                '}';
+    }
 }
 
 

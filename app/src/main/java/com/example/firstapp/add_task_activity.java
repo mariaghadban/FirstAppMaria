@@ -11,13 +11,12 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.firstapp.data.usersTable.MySubject;
 import com.example.firstapp.data.usersTable.mySubjectQurey;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class add_task_activity extends AppCompatActivity {
@@ -25,10 +24,10 @@ public class add_task_activity extends AppCompatActivity {
     private Button cancelBtnTask;
     private TextView tvImportance;
     private SeekBar seekBarIm;
-    private TextInputLayout titleShort;
-    private TextInputLayout etTextAdd;
+    private TextInputEditText titleShort;
+    private TextInputEditText etTextAd;
     private AutoCompleteTextView AutoEtSubj;
-
+    private AutoCompleteTextView etSubj;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -40,12 +39,13 @@ public class add_task_activity extends AppCompatActivity {
         initAutoEtSubjects();
 
 
-        etTextAdd = findViewById(R.id.etTextAd);
+        etTextAd = findViewById(R.id.etTextAd);
         titleShort = findViewById(R.id.titleShort);
         seekBarIm = findViewById(R.id.seekBarIm);
         tvImportance = findViewById(R.id.tvImportance);
         cancelBtnTask = findViewById(R.id.cancelBtnTask);
         saveBtnTask = findViewById(R.id.saveBtnTask);
+        etSubj= findViewById(R.id.etSubj);
     }
 
     private void initAutoEtSubjects() {
@@ -69,14 +69,20 @@ public class add_task_activity extends AppCompatActivity {
 
     {
         boolean isAllOk = true;
+        String subjText = etSubj.getText().toString();
+        String TextAdd=etTextAd.getText().toString();
+
         if (isAllOk) {
             AppDatabase db = AppDatabase.getDB(getApplicationContext());
             mySubjectQurey subjectQurey = db.getMySubjectQuery();
-            if (subjectQurey.checkSubject(tN)==null){
+            if (subjectQurey.checkSubject(subjText)==null){
                 MySubject subject=new MySubject();
                 subject.tName=subjText;
+                subjectQurey.insertAll(subject);
             }
-
+            if (subjText.length() ==0 ) {
+                isAllOk = false;
+                etTextAd.setError("wrong password");
 
         }
     }
