@@ -13,6 +13,8 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.firstapp.MyTask.MyTask;
+import com.example.firstapp.UsersTable.MyUser;
 import com.example.firstapp.data.usersTable.MySubject;
 import com.example.firstapp.data.usersTable.mySubjectQurey;
 import com.google.android.material.textfield.TextInputEditText;
@@ -66,69 +68,58 @@ public class add_task_activity extends AppCompatActivity {
 
     }
 
-    private void checkAndSaveTask()
-    {
+    private void checkAndSaveTask() {
 
         boolean isAllOk=true; // يحوي نتيجة فحص الحقول ان كانت سليمة
-
         String shortTitle=titleShort.getText().toString();
         String text=etTextAd.getText().toString();
-        String whichsubj=etSubj.getText().toString();
+        String subjectText=etSubj.getText().toString();
+        int importancee=seekBarIm.getProgress();
 
-
-        int importancee=skbrlimportance.getProgress();
-
-
-        if (shortTitle.length()<1)
-        {
+        if (shortTitle.length()<1) {
             isAllOk=false;
             titleShort.setError("short title is empty");
         }
 
-        if (text.length()<1)
-        {
+        if (text.length()<1) {
             isAllOk=false;
             etTextAd.setError("text is empty");
         }
-        if (whichsubj.length()<1)
-        {
+
+        if (subjectText.length()<1) {
             isAllOk=false;
             etSubj.setError("you didn't chose the subject");
 
         }
 
-        if (isAllOk)
-        {
+        if (isAllOk) {
             Toast.makeText(this,"All ok", Toast.LENGTH_SHORT).show();
             AppDatabase db=AppDatabase.getDB(getApplicationContext());
             mySubjectQurey subjectQuery=db.getMySubjectQuery();
 
 
-            if (subjectQuery.checkSubject(whichsubj)==null) // فحص هل الموضوع من قبل بالجدول
+            if (subjectQuery.checkSubject(subjectText)==null) // فحص هل الموضوع من قبل بالجدول
             {
                 //بناء موضوع جديد واضافته
-                Mysubject subject=new Mysubject();
-                subject.title=whichsubj;
-                subjectQuery.insertsubject(subject);
+                MySubject subject=new MySubject();
+                subject.name=subjectText;
+                subjectQuery.insertAll(subject);
             }
             //استخراج id الموضوع لأننا بحاجة لرقمه التسلسلي
 
-            Mysubject subject= subjectQuery.checkSubject(whichsubj);
+            MyUser subject= subjectQuery.checkSubject(subjectText);
 
 
-            Mytask task=new Mytask();
+            MyTask task=new MyTask();
             task.importance=importancee;
             task.text=text;
-            task.shortTitle=shortTitle;
-            task.subid=subject.getKeyid();//تحديد رقم الموضوع للمهة
-            db.getMyTaskQuery().insertTask(task);//اضافة المهمة للجدول
+            //task.titleShort=titleShort;
+            task.subId=subject.getKeyid();//تحديد رقم الموضوع للمهة
+            db.getMyTaskQuery().insert(task);//اضافة المهمة للجدول
             finish();
-
-
-
-
         }
 
 
     }
+
 }

@@ -15,18 +15,18 @@ public class MySubject {
 
     @PrimaryKey(autoGenerate = true)//تحديد الصفة كمفتاح رئيسي والذي يُنتجح بشكل تلقائي
     public long keyId;
-    public long name;
+    public String name;
     public String tName;
 
     public long getKeyId() {
         return keyId;
     }
 
-    public long getName() {
+    public String getName() {
         return name;
     }
 
-    public String getName() {
+    public String gettName() {
         return tName;
     }
 
@@ -34,11 +34,11 @@ public class MySubject {
         this.keyId = keyId;
     }
 
-    public void setName(long name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public void setName(String tName) {
+    public void setTName(String tName) {
         this.tName = tName;
     }
 
