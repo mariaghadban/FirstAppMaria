@@ -11,6 +11,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.firstapp.data.usersTable.MySubject;
 import com.example.firstapp.data.usersTable.mySubjectQurey;
@@ -45,7 +46,7 @@ public class add_task_activity extends AppCompatActivity {
         tvImportance = findViewById(R.id.tvImportance);
         cancelBtnTask = findViewById(R.id.cancelBtnTask);
         saveBtnTask = findViewById(R.id.saveBtnTask);
-        etSubj= findViewById(R.id.etSubj);
+        etSubj = findViewById(R.id.etSubj);
     }
 
     private void initAutoEtSubjects() {
@@ -66,27 +67,68 @@ public class add_task_activity extends AppCompatActivity {
     }
 
     private void checkAndSaveTask()
-
     {
-        boolean isAllOk = true;
-        String subjText = etSubj.getText().toString();
-        String TextAdd=etTextAd.getText().toString();
 
-        if (isAllOk) {
-            AppDatabase db = AppDatabase.getDB(getApplicationContext());
-            mySubjectQurey subjectQurey = db.getMySubjectQuery();
-            if (subjectQurey.checkSubject(subjText)==null){
-                MySubject subject=new MySubject();
-                subject.tName=subjText;
-                subjectQurey.insertAll(subject);
-            }
-            if (subjText.length() ==0 ) {
-                isAllOk = false;
-                etTextAd.setError("wrong password");
+        boolean isAllOk=true; // يحوي نتيجة فحص الحقول ان كانت سليمة
+
+        String shortTitle=titleShort.getText().toString();
+        String text=etTextAd.getText().toString();
+        String whichsubj=etSubj.getText().toString();
+
+
+        int importancee=skbrlimportance.getProgress();
+
+
+        if (shortTitle.length()<1)
+        {
+            isAllOk=false;
+            titleShort.setError("short title is empty");
+        }
+
+        if (text.length()<1)
+        {
+            isAllOk=false;
+            etTextAd.setError("text is empty");
+        }
+        if (whichsubj.length()<1)
+        {
+            isAllOk=false;
+            etSubj.setError("you didn't chose the subject");
 
         }
+
+        if (isAllOk)
+        {
+            Toast.makeText(this,"All ok", Toast.LENGTH_SHORT).show();
+            AppDatabase db=AppDatabase.getDB(getApplicationContext());
+            mySubjectQurey subjectQuery=db.getMySubjectQuery();
+
+
+            if (subjectQuery.checkSubject(whichsubj)==null) // فحص هل الموضوع من قبل بالجدول
+            {
+                //بناء موضوع جديد واضافته
+                Mysubject subject=new Mysubject();
+                subject.title=whichsubj;
+                subjectQuery.insertsubject(subject);
+            }
+            //استخراج id الموضوع لأننا بحاجة لرقمه التسلسلي
+
+            Mysubject subject= subjectQuery.checkSubject(whichsubj);
+
+
+            Mytask task=new Mytask();
+            task.importance=importancee;
+            task.text=text;
+            task.shortTitle=shortTitle;
+            task.subid=subject.getKeyid();//تحديد رقم الموضوع للمهة
+            db.getMyTaskQuery().insertTask(task);//اضافة المهمة للجدول
+            finish();
+
+
+
+
+        }
+
+
     }
-
-
-
 }
