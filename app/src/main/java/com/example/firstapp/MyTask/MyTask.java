@@ -16,10 +16,65 @@ public class MyTask {
     public long time;
     public boolean isCompleted;
 
+    public long getKeyId() {
+        return keyId;
+    }
+
+    public void setKeyId(long keyId) {
+        this.keyId = keyId;
+    }
+
+    public int getImportance() {
+        return importance;
+    }
+
+    public void setImportance(int importance) {
+        this.importance = importance;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public long getSubId() {
+        return subId;
+    }
+
+    public void setSubId(long subId) {
+        this.subId = subId;
+    }
+
+    public long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
+
+    public long getTime() {
+        return time;
+    }
+
+    public void setTime(long time) {
+        this.time = time;
+    }
+
+    public boolean isCompleted() {
+        return isCompleted;
+    }
+
+    public void setCompleted(boolean completed) {
+        isCompleted = completed;
+    }
 
     @Override
     public String toString() {
-        return "myTask{" +
+        return "MyTask{" +
                 "keyId=" + keyId +
                 ", importance=" + importance +
                 ", text='" + text + '\'' +
@@ -29,6 +84,7 @@ public class MyTask {
                 ", isCompleted=" + isCompleted +
                 '}';
     }
+
 
     //public List<MyTask> getAllTasks() {
     //}

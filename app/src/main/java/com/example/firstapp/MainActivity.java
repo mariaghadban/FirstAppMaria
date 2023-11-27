@@ -1,22 +1,18 @@
 package com.example.firstapp;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.firstapp.MyTask.MyTask;
@@ -126,11 +122,22 @@ public class MainActivity extends AppCompatActivity {
     private void initListViewSubjId(long keyId){
         AppDatabase db=AppDatabase.getDB(getApplicationContext());
         MyTaskQurey taskQuery =db.getMyTaskQuery();
-        List<MyTask> allTasks= taskQuery.getTasksBySubjId(keyId);
-
-
+        List<MyTask> allTasks= taskQuery.getAllTasks(keyId);
+        ArrayAdapter<MyTask> taskAdapter = new ArrayAdapter<MyTask>(this, android.R.layout.simple_list_item_1);
+        taskAdapter.addAll(allTasks);
+        listt.setAdapter(taskAdapter);
 
     }
+     public void onItemSelected(AdapterView<>adapterView,View view,int i, long l){
+         ArrayAdapter<String> subjectAdapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line);
+
+         String item= subjectAdapter.getItem(i);
+         if (item.equals("ALL"))
+             initAllListView();
+         else{
+             MySubject subject=mySubjectQurey.
+         }
+     }
 
 
 
