@@ -3,6 +3,8 @@ package com.example.firstapp.MyTask;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.util.List;
+
 @Entity
 public class MyTask {
     @PrimaryKey(autoGenerate = true)//تحديد الصفة كمفتاح رئيسي والذي يُنتجح بشكل تلقائي
@@ -27,4 +29,7 @@ public class MyTask {
                 ", isCompleted=" + isCompleted +
                 '}';
     }
+
+    //public List<MyTask> getAllTasks() {
+    //}
 }

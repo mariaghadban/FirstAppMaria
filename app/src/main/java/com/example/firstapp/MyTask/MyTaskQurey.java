@@ -59,4 +59,5 @@ public interface MyTaskQurey {
     @Update
     void update(MyTask...tasks);
 
+    List<MyTask> getAllTasks();
 }
