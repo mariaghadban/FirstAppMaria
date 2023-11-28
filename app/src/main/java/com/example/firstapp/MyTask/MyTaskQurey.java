@@ -60,6 +60,5 @@ public interface MyTaskQurey {
     void update(MyTask...tasks);
 
 
-
     List<MyTask> getAllTasks(long keyId);
 }

@@ -107,14 +107,14 @@ public class add_task_activity extends AppCompatActivity {
             }
             //استخراج id الموضوع لأننا بحاجة لرقمه التسلسلي
 
-            MyUser subject= subjectQuery.checkSubject(subjectText);
+            MySubject subject= subjectQuery.checkSubject(subjectText);
 
 
             MyTask task=new MyTask();
             task.importance=importancee;
             task.text=text;
             //task.titleShort=titleShort;
-            task.subId=subject.getKeyid();//تحديد رقم الموضوع للمهة
+            task.subId=subject.getKeyId();//تحديد رقم الموضوع للمهة
             db.getMyTaskQuery().insert(task);//اضافة المهمة للجدول
             finish();
         }

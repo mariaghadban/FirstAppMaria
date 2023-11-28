@@ -30,6 +30,9 @@ public class MainActivity extends AppCompatActivity {
     private FloatingActionButton floatingActionButton;
 
 
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         listt = findViewById(R.id.listt);
         floatingActionButton = findViewById(R.id.floatingActionButton);
 
+
     }
 
     @Override
@@ -48,19 +52,7 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId()==R.id.ItemHistory)
-        {
-        }
-        if (item.getItemId()==R.id.ItemSetting)
-        {
-        }
-        if (item.getItemId()==R.id.ItemSignOut)
-        {
-        }
-        return true;
-    }
+
 
     protected void onRestart() {
         super.onRestart();
@@ -97,23 +89,20 @@ public class MainActivity extends AppCompatActivity {
         Log.d("", "");
         Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
     }
-    private void initSubjectSpnr(){
-        AppDatabase db=AppDatabase.getDB(getApplicationContext());
-        mySubjectQurey subjectQuery=db.getMySubjectQuery();
-        List<MySubject> allSubjects= subjectQuery.getAllSubjects();
-        ArrayAdapter<String> subjectAdapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line);
-        subjectAdapter.add("ALL");
-        for (MySubject subject  : allSubjects){ //اضافة المواضيع للوسيط
-            subjectAdapter.add(subject.tName);
-        }
-        spnrSubject.setAdapter(subjectAdapter);
-        //ليبين للمستخدم انو بعد في تقدم وبن هو يعني بعدو عم بجيب معطيات..
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId()==R.id.ItemHistory) {}
+        if (item.getItemId()==R.id.ItemSetting) {}
+        if (item.getItemId()==R.id.ItemSignOut) {}
+        return true;
     }
+
+
     private void initAllListView() {
         AppDatabase db=AppDatabase.getDB(getApplicationContext());
         MyTaskQurey taskQuery =db.getMyTaskQuery();
-        List<MyTask> allTasks= taskQuery.getAllTasks();
+        List<MyTask> allTasks= taskQuery.getAll();
         ArrayAdapter<String> taskAdapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line);
         taskAdapter.addAll(String.valueOf(allTasks));
         listt.setAdapter(taskAdapter);
@@ -128,16 +117,42 @@ public class MainActivity extends AppCompatActivity {
         listt.setAdapter(taskAdapter);
 
     }
-     public void onItemSelected(AdapterView<>adapterView,View view,int i, long l){
-         ArrayAdapter<String> subjectAdapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line);
 
-         String item= subjectAdapter.getItem(i);
-         if (item.equals("ALL"))
-             initAllListView();
-         else{
-             MySubject subject=mySubjectQurey.
-         }
-     }
+    private void initSubjectSpnr() {
+        AppDatabase db = AppDatabase.getDB(getApplicationContext());
+        mySubjectQurey subjectQuery = db.getMySubjectQuery();
+        List<MySubject> allSubjects = subjectQuery.getAllSubjects();
+        ArrayAdapter<String> subjectAdapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line);
+        subjectAdapter.add("ALL");
+        for (MySubject subject : allSubjects) { //اضافة المواضيع للوسيط
+            subjectAdapter.add(subject.tName);
+        }
+        spnrSubject.setAdapter(subjectAdapter);
+
+        //ليبين للمستخدم انو بعد في تقدم وبن هو يعني بعدو عم بجيب معطيات..
+        spnrSubject.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                //  استخرج جميع المهمات i
+                String item = subjectAdapter.getItem(position);
+                if (item.equals("ALL"))//يعني عرض جميع المهمات
+                    initAllListView();
+                else {
+                    MySubject subject = mySubjectQurey.checkSubject(item);
+                    initListViewSubjId(subject.getKeyId());
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+            }
+        });
+    }
+
+
+
+
 
 
 
