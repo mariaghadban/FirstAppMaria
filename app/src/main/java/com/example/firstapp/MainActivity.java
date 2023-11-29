@@ -7,7 +7,6 @@ import androidx.appcompat.widget.SearchView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -48,27 +47,37 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @Override
+   /* @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu,menu);
         return true;
-    }
+    }*/
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId()==R.id.ItemHistory) {}
         if (item.getItemId()==R.id.ItemSetting) {}
-        if (item.getItemId()==R.id.ItemSignOut) {}
+        if (item.getItemId()==R.id.ItemSetting) {}
         return true;
     }
-    public void showPopUpMenu(View v) {
+
+    public void showPopUpMenu(View v,MyTask t) {
         PopupMenu popup = new PopupMenu(this, v);
+        popup.inflate(R.menu.main_menu);
         popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                if (item.getItemId()==R.id.listt){
-                    Toast.makeText(MainActivity.this," list ",Toast.LENGTH_SHORT).show();
+                if (item.getItemId()==R.id.ItemSetting){
+                    Toast.makeText(MainActivity.this," signOut ",Toast.LENGTH_SHORT).show();
                     Intent i=new Intent(MainActivity.this,add_task_activity.class);
                     startActivity(i);
+                }
+                if (item.getItemId()==R.id.ItemSetting){
+                    Toast.makeText(MainActivity.this,"Setting",Toast.LENGTH_SHORT).show();
+                }
+                if (item.getItemId()==R.id.ItemHistory){
+                    Toast.makeText(MainActivity.this,"history",Toast.LENGTH_SHORT).show();
+
                 }
                 return true;
 
@@ -123,10 +132,14 @@ public class MainActivity extends AppCompatActivity {
         AppDatabase db=AppDatabase.getDB(getApplicationContext());
         MyTaskQurey taskQuery =db.getMyTaskQuery();
         List<MyTask> allTasks= taskQuery.getAll();
-        ArrayAdapter<String> taskAdapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line);
-        taskAdapter.addAll(String.valueOf(allTasks));
+        ArrayAdapter<MyTask> taskAdapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line);
+        taskAdapter.addAll();
         listt.setAdapter(taskAdapter);
-        
+        listt.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                showPopUpMenu(view, taskAdapter.getItem(i));
+            }
+        });
     }
     private void initListViewSubjId(long keyId){
         AppDatabase db=AppDatabase.getDB(getApplicationContext());

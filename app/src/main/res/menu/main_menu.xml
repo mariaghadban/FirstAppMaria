@@ -4,11 +4,11 @@
 
     <item
         android:id="@+id/ItemSetting"
-        android:title="Settings" />
+        android:title="Sign out" />
     <item
         android:id="@+id/ItemHistory"
         android:title="history" />
     <item
-        android:id="@+id/ItemSignOut"
-        android:title="Sign out" />
+        android:id="@+id/ItemSetting"
+        android:title="Settings" />
 </menu>
