@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.PopupMenu;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -50,6 +52,30 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu,menu);
         return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId()==R.id.ItemHistory) {}
+        if (item.getItemId()==R.id.ItemSetting) {}
+        if (item.getItemId()==R.id.ItemSignOut) {}
+        return true;
+    }
+    public void showPopUpMenu(View v) {
+        PopupMenu popup = new PopupMenu(this, v);
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                if (item.getItemId()==R.id.listt){
+                    Toast.makeText(MainActivity.this," list ",Toast.LENGTH_SHORT).show();
+                    Intent i=new Intent(MainActivity.this,add_task_activity.class);
+                    startActivity(i);
+                }
+                return true;
+
+            }
+        });
+        popup.show();
+
     }
 
 
@@ -90,13 +116,7 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
     }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId()==R.id.ItemHistory) {}
-        if (item.getItemId()==R.id.ItemSetting) {}
-        if (item.getItemId()==R.id.ItemSignOut) {}
-        return true;
-    }
+
 
 
     private void initAllListView() {
@@ -138,17 +158,17 @@ public class MainActivity extends AppCompatActivity {
                 if (item.equals("ALL"))//يعني عرض جميع المهمات
                     initAllListView();
                 else {
-                    MySubject subject = mySubjectQurey.checkSubject(item);
+                    MySubject subject = mySubjectQurey.(item);
                     initListViewSubjId(subject.getKeyId());
                 }
 
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
             }
         });
     }
+
 
 
 

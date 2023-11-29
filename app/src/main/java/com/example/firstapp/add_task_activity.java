@@ -98,7 +98,7 @@ public class add_task_activity extends AppCompatActivity {
             mySubjectQurey subjectQuery=db.getMySubjectQuery();
 
 
-            if (subjectQuery.checkSubject(subjectText)==null) // فحص هل الموضوع من قبل بالجدول
+            if (mySubjectQurey.checkSubject(subjectText)==null) // فحص هل الموضوع من قبل بالجدول
             {
                 //بناء موضوع جديد واضافته
                 MySubject subject=new MySubject();
@@ -107,7 +107,7 @@ public class add_task_activity extends AppCompatActivity {
             }
             //استخراج id الموضوع لأننا بحاجة لرقمه التسلسلي
 
-            MySubject subject= subjectQuery.checkSubject(subjectText);
+            MySubject subject= mySubjectQurey.checkSubject(subjectText);
 
 
             MyTask task=new MyTask();

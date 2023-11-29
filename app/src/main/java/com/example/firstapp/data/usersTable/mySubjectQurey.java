@@ -31,7 +31,7 @@ public interface mySubjectQurey {
     void update(MySubject... values);
 
     @Query("SELECT * FROM MySubject WHERE tName=:subjectText ")
-    static MySubject checkSubject(String subjectText);
+     MySubject checkSubject(String subjectText);
 
 
     @Query("SELECT * FROM MySubject WHERE tName=:whsubject ")
