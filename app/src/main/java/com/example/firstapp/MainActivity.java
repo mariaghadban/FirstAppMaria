@@ -165,13 +165,14 @@ public class MainActivity extends AppCompatActivity {
         //ليبين للمستخدم انو بعد في تقدم وبن هو يعني بعدو عم بجيب معطيات..
         spnrSubject.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemSelected(AdapterView<?> parent, View view, int i, long id) {
                 //  استخرج جميع المهمات i
-                String item = subjectAdapter.getItem(position);
-                if (item.equals("ALL"))//يعني عرض جميع المهمات
+                String item = subjectAdapter.getItem(i);
+                String item1 = item;
+                if (item1.equals("ALL"))//يعني عرض جميع المهمات
                     initAllListView();
                 else {
-                    MySubject subject = mySubjectQurey.(item);
+                    MySubject subject =mySubjectQurey.checkSubject(item);
                     initListViewSubjId(subject.getKeyId());
                 }
 

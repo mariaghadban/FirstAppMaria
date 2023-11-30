@@ -59,6 +59,6 @@ public interface MyTaskQurey {
     @Update
     void update(MyTask...tasks);
 
-
+    @Query("SELECT * FROM MyTask ")
     List<MyTask> getAllTasks(long keyId);
 }

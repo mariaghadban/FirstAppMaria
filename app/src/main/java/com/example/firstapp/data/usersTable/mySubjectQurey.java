@@ -31,10 +31,12 @@ public interface mySubjectQurey {
     void update(MySubject... values);
 
     @Query("SELECT * FROM MySubject WHERE tName=:subjectText ")
-     MySubject checkSubject(String subjectText);
+    static MySubject checkSubject(String subjectText) {
+        return null;
+    }
 
 
-    @Query("SELECT * FROM MySubject WHERE tName=:whsubject ")
+    @Query("SELECT * FROM MySubject ")
     List<MySubject> getAllSubjects();
 
 }
