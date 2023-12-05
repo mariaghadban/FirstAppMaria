@@ -131,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
     private void initAllListView() {
         AppDatabase db=AppDatabase.getDB(getApplicationContext());
         MyTaskQurey taskQuery =db.getMyTaskQuery();
-        List<MyTask> allTasks= taskQuery.getAll();
+        List<MyTask> getAll= taskQuery.getAll();
         ArrayAdapter<MyTask> taskAdapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line);
         taskAdapter.addAll();
         listt.setAdapter(taskAdapter);
@@ -144,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
     private void initListViewSubjId(long keyId){
         AppDatabase db=AppDatabase.getDB(getApplicationContext());
         MyTaskQurey taskQuery =db.getMyTaskQuery();
-        List<MyTask> allTasks= taskQuery.getAllTasks(keyId);
+        List<MyTask> allTasks= taskQuery.getTasksBySubId(keyId);
         ArrayAdapter<MyTask> taskAdapter = new ArrayAdapter<MyTask>(this, android.R.layout.simple_list_item_1);
         taskAdapter.addAll(allTasks);
         listt.setAdapter(taskAdapter);

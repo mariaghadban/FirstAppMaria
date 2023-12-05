@@ -51,6 +51,8 @@ public interface MyTaskQurey {
 
     @Insert
     void insert(MyTask task);
+    @Query("SELECT * FROM MyTask ")
+    List<MyTask> getAllTasks();
 
     /**
      * تعديل المهمات
@@ -58,7 +60,9 @@ public interface MyTaskQurey {
      */
     @Update
     void update(MyTask...tasks);
-
-    @Query("SELECT * FROM MyTask ")
-    List<MyTask> getAllTasks(long keyId);
+/**
+ * ترجيع جميع المهام حسب رقم الموضوع
+ */
+@Query("SELECT* From myTask WHERE keyId=:id ")
+     List<MyTask>getTasksBySubId(long id);
 }
