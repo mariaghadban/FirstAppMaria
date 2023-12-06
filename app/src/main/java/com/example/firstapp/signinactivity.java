@@ -38,15 +38,13 @@ public class signinactivity extends AppCompatActivity {
 
 
     }
-    /*
-    public void onClickMain(View v){
-        Intent in= new Intent(signinactivity.this, MainActivity.class);
-        startActivity(in);
-        finish();
+
+    public void onClickSingnIn(View v){
+       checkEmailPASS();
 
 
     }
-*/
+
 
     private void checkEmailPASS() {
         boolean isAllOk = true;
@@ -56,7 +54,7 @@ public class signinactivity extends AppCompatActivity {
             isAllOk = false;
             etEmail.setError("wrong email");
         }
-        if (password.length() < 8 || password.contains(" ") == true) {
+        if (password.length() < 7 || password.contains(" ") == true) {
             isAllOk = false;
             etPassword.setError("wrong password");
         }

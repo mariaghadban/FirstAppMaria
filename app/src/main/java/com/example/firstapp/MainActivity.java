@@ -141,6 +141,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
     private void initListViewSubjId(long keyId){
         AppDatabase db=AppDatabase.getDB(getApplicationContext());
         MyTaskQurey taskQuery =db.getMyTaskQuery();
@@ -182,15 +183,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-
-
-
-
-
-
-
-
-
 
 }
