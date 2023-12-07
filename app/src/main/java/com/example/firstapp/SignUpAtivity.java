@@ -42,11 +42,8 @@ public class SignUpAtivity extends AppCompatActivity {
 
     }
 
-    public void onClickSignIn(View v){
-        Intent i= new Intent(SignUpAtivity.this, signinactivity.class);
-        startActivity(i);
-        finish();
-
+    public void onClickSignSave(View v){
+        checkEmailPASS();
     }
     public void onClickCancel(View v){
         Intent i= new Intent(SignUpAtivity.this, splashScreenActivity.class);

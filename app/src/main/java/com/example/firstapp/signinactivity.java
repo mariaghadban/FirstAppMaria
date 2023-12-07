@@ -39,43 +39,48 @@ public class signinactivity extends AppCompatActivity {
 
     }
 
-    public void onClickSingnIn(View v){
-       checkEmailPASS();
 
 
-    }
+
+
 
 
     private void checkEmailPASS() {
         boolean isAllOk = true;
-        String email = etEmail.getText().toString();
-        String password = etPassword.getText().toString();
-        if (email.length() < 6 || email.contains("@") == false) {
-            isAllOk = false;
-            etEmail.setError("wrong email");
-        }
-        if (password.length() < 7 || password.contains(" ") == true) {
-            isAllOk = false;
-            etPassword.setError("wrong password");
-        }
+                String email = etEmail.getText().toString();
+                String password = etPassword.getText().toString();
+                if (email.length() < 6 || email.contains("@") == false) {
+                    isAllOk = false;
+                    etEmail.setError("wrong email");
+                }
+                if (password.length() < 7 || password.contains(" ") == true) {
+                    isAllOk = false;
+                    etPassword.setError("wrong password");
+                }
 
-        if (isAllOk) {
-            Toast.makeText(this, "All Ok", Toast.LENGTH_SHORT).show();
-            AppDatabase db = AppDatabase.getDB(getApplicationContext());
-            myUserQurey userQurey = db.getMyUserQuery();
-            MyUser MyUser = userQurey.checkEmailPassw(email, password);
-            if (MyUser==null){
-                Toast.makeText(this, "wrong email or password", Toast.LENGTH_LONG).show();
+                if (isAllOk) {
+                    Toast.makeText(this, "All Ok", Toast.LENGTH_SHORT).show();
+                    AppDatabase db = AppDatabase.getDB(getApplicationContext());
+                    myUserQurey userQurey = (myUserQurey) db.getMyUserQuery();
+                    MyUser MyUser = userQurey.checkEmailPassw(email, password);
+                    if (MyUser==null){
+                        Toast.makeText(this, "wrong email or password", Toast.LENGTH_LONG).show();
 
+                    }
+                    else
+                    {
+                        Intent i=new Intent(signinactivity.this,MainActivity.class);
+                        startActivity(i);
+                        finish();
             }
-            else
-            {
-                Intent i=new Intent(signinactivity.this,MainActivity.class);
-                startActivity(i);
-                finish();
-            }
         }
 
         }
+    public void onClickSingnIn(View v) {
+        Intent i= new Intent(signinactivity.this, MainActivity.class);
+        startActivity(i);
+        finish();
+
+    }
     }
 
