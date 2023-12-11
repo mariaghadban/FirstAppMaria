@@ -14,11 +14,17 @@ import com.example.firstapp.data.usersTable.mySubjectQurey;
 
 //3
 @Database(entities = {MyUser.class, MySubject.class, MyTask.class},version = 5)
+//الفئة المسؤولة عن بناء قاعدة البيانات بكل جداولها وتوفر لنا كائن للتعامل مع قاعدة البيانات
 public abstract class AppDatabase extends RoomDatabase
 {
-    private static AppDatabase db;
+    /**
+     * كائن للتعامل مع قاعدة البيانات
+     */
+    private static AppDatabase db;//يعيد كائن لعمليات جدول المستعملين
     public abstract myUserQurey getMyUserQuery();
+    //يعيد كائن لعمليات جدول المواضيع
     public abstract mySubjectQurey getMySubjectQuery();
+    //يعيد كاىن لعمليات جدول المهمات
     public abstract MyTaskQurey getMyTaskQuery();
     public static AppDatabase getDB(Context context)
     {
