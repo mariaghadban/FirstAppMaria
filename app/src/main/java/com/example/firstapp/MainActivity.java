@@ -33,9 +33,6 @@ public class MainActivity extends AppCompatActivity {
     private FloatingActionButton floatingActionButton;
 
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,28 +54,33 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId()==R.id.settingItem) {}
-        if (item.getItemId()==R.id.addTaskItem) {}
-        if (item.getItemId()==R.id.logOutItem) {}
+        if (item.getItemId() == R.id.settingItem) {
+        }
+        if (item.getItemId() == R.id.logOutItem) {
+            showYesNoDialog();
+
+        }
+        if (item.getItemId() == R.id.addTaskItem) {
+        }
         return true;
     }
 
-    public void showPopUpMenu(View v,MyTask t) {
+    public void showPopUpMenu(View v, MyTask t) {
         PopupMenu popup = new PopupMenu(this, v);
         popup.inflate(R.menu.main_menu);
         popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                if (item.getItemId()==R.id.logOutItem){
-                    Toast.makeText(MainActivity.this," signOut ",Toast.LENGTH_SHORT).show();
-                    Intent i=new Intent(MainActivity.this,add_task_activity.class);
+                if (item.getItemId() == R.id.logOutItem) {
+                    Toast.makeText(MainActivity.this, " signOut ", Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(MainActivity.this, add_task_activity.class);
                     startActivity(i);
                 }
-                if (item.getItemId()==R.id.addTaskItem){
-                    Toast.makeText(MainActivity.this,"add task",Toast.LENGTH_SHORT).show();
+                if (item.getItemId() == R.id.addTaskItem) {
+                    Toast.makeText(MainActivity.this, "add task", Toast.LENGTH_SHORT).show();
                 }
-                if (item.getItemId()==R.id.settingItem){
-                    Toast.makeText(MainActivity.this,"setting",Toast.LENGTH_SHORT).show();
+                if (item.getItemId() == R.id.settingItem) {
+                    Toast.makeText(MainActivity.this, "setting", Toast.LENGTH_SHORT).show();
 
                 }
                 return true;
@@ -88,7 +90,6 @@ public class MainActivity extends AppCompatActivity {
         popup.show();
 
     }
-
 
 
     protected void onRestart() {
@@ -128,12 +129,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-
     private void initAllListView() {
-        AppDatabase db=AppDatabase.getDB(getApplicationContext());
-        MyTaskQurey taskQuery =db.getMyTaskQuery();
-        List<MyTask> getAll= taskQuery.getAll();
+        AppDatabase db = AppDatabase.getDB(getApplicationContext());
+        MyTaskQurey taskQuery = db.getMyTaskQuery();
+        List<MyTask> getAll = taskQuery.getAll();
         ArrayAdapter<MyTask> taskAdapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line);
         taskAdapter.addAll();
         listt.setAdapter(taskAdapter);
@@ -144,10 +143,10 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void initListViewSubjId(long keyId){
-        AppDatabase db=AppDatabase.getDB(getApplicationContext());
-        MyTaskQurey taskQuery =db.getMyTaskQuery();
-        List<MyTask> allTasks= taskQuery.getTasksBySubId(keyId);
+    private void initListViewSubjId(long keyId) {
+        AppDatabase db = AppDatabase.getDB(getApplicationContext());
+        MyTaskQurey taskQuery = db.getMyTaskQuery();
+        List<MyTask> allTasks = taskQuery.getTasksBySubId(keyId);
         ArrayAdapter<MyTask> taskAdapter = new ArrayAdapter<MyTask>(this, android.R.layout.simple_list_item_1);
         taskAdapter.addAll(allTasks);
         listt.setAdapter(taskAdapter);
@@ -175,17 +174,19 @@ public class MainActivity extends AppCompatActivity {
                 if (item1.equals("ALL"))//يعني عرض جميع المهمات
                     initAllListView();
                 else {
-                    MySubject subject =mySubjectQurey.checkSubject(item);
+                    MySubject subject = mySubjectQurey.checkSubject(item);
                     initListViewSubjId(subject.getKeyId());
                 }
 
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
             }
         });
     }
-  /*  public void showYesNoDialog(){
+
+    public void showYesNoDialog(){
         AlertDialog.Builder builder=new AlertDialog.Builder(this);
         builder.setTitle("log out");
         builder.setMessage("are ypu sure?");
@@ -201,4 +202,4 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-}*/
+}
