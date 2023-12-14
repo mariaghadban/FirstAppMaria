@@ -1,9 +1,11 @@
 package com.example.firstapp;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -55,9 +57,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId()==R.id.ItemHistory) {}
-        if (item.getItemId()==R.id.ItemSetting) {}
-        if (item.getItemId()==R.id.ItemSetting) {}
+        if (item.getItemId()==R.id.settingItem) {}
+        if (item.getItemId()==R.id.addTaskItem) {}
+        if (item.getItemId()==R.id.logOutItem) {}
         return true;
     }
 
@@ -67,16 +69,16 @@ public class MainActivity extends AppCompatActivity {
         popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                if (item.getItemId()==R.id.ItemSetting){
+                if (item.getItemId()==R.id.logOutItem){
                     Toast.makeText(MainActivity.this," signOut ",Toast.LENGTH_SHORT).show();
                     Intent i=new Intent(MainActivity.this,add_task_activity.class);
                     startActivity(i);
                 }
-                if (item.getItemId()==R.id.ItemSetting){
-                    Toast.makeText(MainActivity.this,"Setting",Toast.LENGTH_SHORT).show();
+                if (item.getItemId()==R.id.addTaskItem){
+                    Toast.makeText(MainActivity.this,"add task",Toast.LENGTH_SHORT).show();
                 }
-                if (item.getItemId()==R.id.ItemHistory){
-                    Toast.makeText(MainActivity.this,"history",Toast.LENGTH_SHORT).show();
+                if (item.getItemId()==R.id.settingItem){
+                    Toast.makeText(MainActivity.this,"setting",Toast.LENGTH_SHORT).show();
 
                 }
                 return true;
@@ -183,5 +185,20 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+  /*  public void showYesNoDialog(){
+        AlertDialog.Builder builder=new AlertDialog.Builder(this);
+        builder.setTitle("log out");
+        builder.setMessage("are ypu sure?");
+        builder.setPositiveButton("yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(MainActivity.this, "sign out", Toast.LENGTH_SHORT).show();
 
-}
+            }
+        });
+        AlertDialog dialog= builder.create();
+        dialog.show();
+    }
+
+
+}*/
